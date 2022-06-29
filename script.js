@@ -13,18 +13,17 @@
 //Display the screen with just the info and 'start quiz' button
 //After user clicks to start, they are presented with questions either in order or randomized,
 // The timer starts when the user clicks the 'start quiz' button. Timer is also displayed on the screen (top right)\
-//The quiz will end when the timer reaches 0
+  //The quiz will end when the timer reaches 0
 // Each question will have multiple options
 // When the user selects the answer choice, they are told whether it is correct or not. 
 //The user is presented with another question everytime they answer a question
-// the answers are saved on the local storage to be presented later
+    // the answers are saved on the local storage to be presented later
 //After user goes through every question, a screen will display showing them how they did 
-//There will be an input to save their info(name) into the high scores
-//After saving, there will be two options, to go back to the beginning or clear high scores. 
+  //There will be an input to save their info(name) into the high scores
+  //After saving, there will be two options, to go back to the beginning or clear high scores. 
 //The score is the timer itself, every time the answer is wrong, 10 is substracted. 10 points per question X 10 questions = 100 seconds. Skips to next question if answered
 
 //need a function for generating the quiz questions
-//need a function for the timer
 
 var startBtn = document.querySelector('.start');
 var highScoresBtn = document.querySelector('.highScores')
@@ -32,156 +31,139 @@ var questionsContainer = document.querySelector('.questions')
 var resultsContainer = document.querySelector('.score')
 var timerContainer = document.querySelector('.timer')
 var choicesContainer = document.querySelector('.choices')
+var headEl = document.querySelector('h1');
+var preGameEl = document.querySelector('.pre-game-info');
 
-var currentScore = 100;
-var currentQuestion = {};
+var currentScore = 0; //later, score will be set to = time left.
+var currentQuestion = 0;
 
 //Quiz questions
 
 var quizQuestions = [
-  // {
-  //   question: "Where does the <script> tags go in the HTML code?",
-  //   choiceA: 'main',
-  //   choiceB: 'header',
-  //   choiceC: 'body',
-  //   choiceD: 'footer',
-  //   correct: 'body'
-  // },
-  // {
-  //   question: "What does the slice method do?",
-  //   choiceA: 'Modifies the original array',
-  //   choiceB: 'Used to insert or delte elements to/from array',
-  //   choiceC: 'Returns subset of original array',
-  //   choiceD: 'Returns deleted elements as array',
-  //   correct: 'Returns subset of original array'
-  // },
-  // {
-  //   question: "Which is not a type of scope in JS?",
-  //   choiceA: 'local',
-  //   choiceB: 'global',
-  //   choiceC: 'block',
-  //   choiceD: 'chain',
-  //   correct: 'chain',
-  // },
-  // {
-  //   question: "What operator should you use when determing the same value and data type?",
-  //   choiceA: '===',
-  //   choiceB: '=',
-  //   choiceC: '==',
-  //   choiceD: '!==',
-  //   correct: '==='
-  // },
   {
-    question: "Test 50/2",
+    question: "Where does the <script> tags go in the HTML code?",
     answers: {
-      a: '3',
-      b: '10',
-      c: '12',
-      d: '1',
+      a: 'main',
+      b: 'header',
+      c: 'body',
+      d: 'footer',
+    },
+    correct: 'c'
+  },
+  {
+    question: "What does the slice method do?",
+    answers: {
+      a: 'Modifies the original array',
+      b: 'Used to insert or delte elements to/from array',
+      c: 'Returns subset of original array',
+      d: 'Returns deleted elements as array',
+    },
+    correct: 'd'
+  },
+  {
+    question: "Which is not a type of scope in JS?",
+    answers: {
+      a: 'local',
+      b: 'global',
+      c: 'block',
+      d: 'chain',
+    },
+    correct: 'd',
+  },
+  {
+    question: "What operator should you use when determing the same value and data type?",
+    answers: {
+      a: '===',
+      b: '=',
+      c: '==',
+      d: '!==',
+    },
+    correct: 'a'
+  },
+  {
+    question: "Which method is used to convert data from a string to an object?",
+    answers: {
+      a: '.stringify',
+      b: '.parse',
+      c: '.reduce',
+      d: '.convert',
     },
     correct: 'b'
   },
-  {
-    question: "Test 60/2",
-    answers: {
-      a: '3',
-      b: '10',
-      c: '12',
-      d: '1',
-    },
-    correct: 'b'
-  },
-  {
-    question: "Test 70/2",
-    answers: {
-      a: '3',
-      b: '10',
-      c: '12',
-      d: '1',
-    },
-    correct: 'b'
-  },
-  {
-    question: "Test 80/2",
-    answers: {
-      a: '3',
-      b: '10',
-      c: '12',
-      d: '1',
-    },
-    correct: 'b'
-  },
-  {
-    question: "Test 90/2",
-    answers: {
-      a: '3',
-      b: '10',
-      c: '12',
-      d: '1',
-    },
-    correct: 'b'
-  },
-  {
-    question: "Test 100/2",
-    answers: {
-      a: '3',
-      b: '10',
-      c: '12',
-      d: '1',
-    },
-    correct: 'b'
-  },
+ 
 ];
 
+function quizGeneration() {
+  //for each item in the array, I need to get the questions, answer, and correct answer
+  //e.stopPropagation();
+  for (var i = 0; i < quizQuestions.length; i++) {
+    questionsContainer.innerHTML = `<h2 class='questions'> ${quizQuestions[i].question} </h2>`;
+    choicesContainer.innerHTML = `
+      <button class='answer-choices-btn'> ${quizQuestions[i].answers.a} </button>
+      <button class='answer-choices-btn'> ${quizQuestions[i].answers.b} </button>
+      <button class='answer-choices-btn'> ${quizQuestions[i].answers.c} </button>
+      <button class='answer-choices-btn'> ${quizQuestions[i].answers.d} </button>`;  
+            
+  } 
+//   quizQuestions.forEach(myFunction);
+//   function myFunction(item, index) {
+//     for (var key in item) {
+//       console.log(item[key]);
+//       resultsContainer.textContent = item[key];
+//     }
+//   }  
+  /*for every quizQuestions.length
+  if quizQuestions[i].answer
+
+  */
+}
+
+//calling the function to generate questions and choices
+quizGeneration();
+
 function startTimer() {
+  //quizGeneration();
+  //e.stopPropagation();
+  headEl.style.display = 'none';
+  preGameEl.style.display = 'none';
   var timeLeft = 100;
-  varTimeInterval = setInterval(function () {
+  var timeInterval = setInterval(function () {
     timeLeft--
     timerContainer.innerHTML = `
     <h2>Timer: ${timeLeft} </h2>`;
-
+    
     //add a conditional that will subtract 5 pts when user chooses wrong answer
-    if (timeLeft === 0) {
+    if(timeLeft === 0) {
       clearInterval(timeInterval);
-      console.log('time up')
+      finalResults();
       // displayResults();
     }
-  }, 1000);
+  }, 100);
 }
 
-function quizGenerator() {
-  var questions = '';
+//function to check if answer is correct
+function checkAnswer() {
+  /*
+  if ( === currentQuestion.correctAnswer) {
 
-  quizQuestions.forEach(function (currentQuestion, questionNumber) {
-    var correctAnswers = [];
-    for (letter in currentQuestion.correntAnswers) {
-      correctAnswers.push(
-        `<label>
-           <input type='radio' name='questions${questionNumber}' value='${letter}'>
-           ${letter} : 
-           ${currentQuesttion.correctAnswer[letter]}
-         </label>`
-      );
-    }
-
-    questions.push(
-      `<div class='questions'> ${currentQuestion.question} </div>
-       <div class='choices'> ${answers.join('')} </div>`
-    );
-  });
-  questionsContainer.innerHTML = questions.join('');
+  } else {
+    timer -= 5;
+    display the correct answer maybe also highlight if it is correct or not. 
+  }
+  */
 }
 
-startBtn.addEventListener('click', quizGenerator);
+function finalResults() {
+  resultsContainer.innerHTML = `
+  <h2>Thanks for playing! Your final score is ${score}</h2>`;
+}
+
 //artBtn.addEventListener('click', startQuiz);
-//function for showing next q
+//function for showing next q - this would be a slide
 //function for checking if correct
 
-// function quizGenerator() {
-//   var 
-// }
 
-//timer
+//Event listener to start timer 
 startBtn.addEventListener('click', startTimer);
-
-
+//startBtn.addEventListener('click', quizGeneration);
+//function for slide 
