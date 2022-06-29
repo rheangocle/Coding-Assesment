@@ -93,17 +93,21 @@ var quizQuestions = [
  
 ];
 
+questionsContainer.style.display = 'none';
 function quizGeneration() {
   //for each item in the array, I need to get the questions, answer, and correct answer
-  //e.stopPropagation();
+  var output = [];
   for (var i = 0; i < quizQuestions.length; i++) {
-    questionsContainer.innerHTML = `<h2 class='questions'> ${quizQuestions[i].question} </h2>`;
-    choicesContainer.innerHTML = `
+    
+    questionsContainer.innerHTML = `
+    <div>
+      <h2 class='questions'> ${quizQuestions[i].question} </h2>
       <button class='answer-choices-btn'> ${quizQuestions[i].answers.a} </button>
       <button class='answer-choices-btn'> ${quizQuestions[i].answers.b} </button>
       <button class='answer-choices-btn'> ${quizQuestions[i].answers.c} </button>
-      <button class='answer-choices-btn'> ${quizQuestions[i].answers.d} </button>`;  
-            
+      <button class='answer-choices-btn'> ${quizQuestions[i].answers.d} </button>
+    </div>`;  
+    
   } 
 //   quizQuestions.forEach(myFunction);
 //   function myFunction(item, index) {
@@ -114,8 +118,9 @@ function quizGeneration() {
 //   }  
   /*for every quizQuestions.length
   if quizQuestions[i].answer
-
+  
   */
+  
 }
 
 //calling the function to generate questions and choices
@@ -123,9 +128,10 @@ quizGeneration();
 
 function startTimer() {
   //quizGeneration();
-  //e.stopPropagation();
+
   headEl.style.display = 'none';
   preGameEl.style.display = 'none';
+  questionsContainer.style.display = 'block';
   var timeLeft = 100;
   var timeInterval = setInterval(function () {
     timeLeft--
