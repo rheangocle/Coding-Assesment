@@ -1,1 +1,5 @@
 # Coding-Assesment
+
+For this challenge, I created a coding quiz game. The game features a homepage that states the rules of the game and the user needs to click start to begin the game timer and start the questions. There will be five questions in total and the user will have 100 seconds to play the game. Everytime the user selects the wrong answer, 6 points will be deducted from the timer. When the user finishes answering all the questions or when the timer runs out, the user will have a chance to record their name into the highscores list. Link to the game: https://rheangocle.github.io/Coding-Assesment/
+
+![Screenshot of site](https://lh3.googleusercontent.com/2cGWrGfXIIJRiJzWImag1rFYP3FvECQk5QBH5DkmHQGLCM9W0CfuoMz3OoXpWWVogGA9XjvvxudaOp-2ttrFVbEmDaHopRuz8sDO8i810kw3K2bo7FBTMHrblPHMDnnoPY4as1c2=w2400);
