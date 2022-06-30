@@ -15,14 +15,14 @@ h1 {
   width: 100%;
   text-align: center;
   font-size: 3rem;
-  margin: 3rem;
+  margin: 3rem 0rem;
 }
 
 h2 {
   display: block;
   text-align: center;
-  font-size: 2rem;
-  margin: 2rem;
+  font-size: 1.75rem;
+  margin: 2rem 0rem;
 }
 
 p {
@@ -36,23 +36,25 @@ p {
 
 .timer {
   display: block;
-  text-align: right;
-  margin: 5rem;
+  text-align: center;
+  /* margin: 5rem; */
   font-size: 1.15rem;
-  z-index: 0;
+  /* z-index: 0; */
 }
 button {
   display: block;
   font-size: 1.3rem;
   text-align: center;
-  background-color: blue;
+  background-color: #3AC8E0;
   border-radius: 8px;
   box-shadow: 3px 3px 3px gray; 
   padding: 10px;
   color: white;
   margin-bottom: 2rem;
 }
-
+button .highscores {
+  margin-left: -50px;
+}
 button:hover {
   cursor: pointer;
 }
@@ -68,11 +70,12 @@ button:hover {
 .button a {
   color: white;
 }
+
 a:visited {
   color: yellow;
 }
 .button-box a {
- text-align: center;
+  text-align: center;
   position: relative;
   top: 45%;
   margin-top: 2rem;
@@ -84,16 +87,38 @@ a:visited {
   top: 50%;
   left: 50%;
 }
-.answer-choices-btn {
-    background-color: yellow;
-    color: black;
-    border-radius: 0px;
-    display: block;
-  }
+.answer-choice-btn {
+  background-color: #DFD699;
+  color: black;
+  border-radius: 5px;
+  display: block;
+  margin-left: 50px;
+}
 
-.questions {
+.questions-container {
   font-size: 1.5rem;
   text-align: left;
   padding: 0.1rem;
-  background-color: lightpink;
+  background-color: #E08EA3;
+  margin: 20px;
 }
+.questions-container h2 {
+  text-align: left;
+  font-size: 1.5rem;
+  padding: 0.1rem;
+  margin: 20px;
+}
+
+.score {
+  background-color: #87E0A0;
+  display: block;
+  text-align: center;
+  padding: 0.1rem;
+}
+
+input {
+ margin-bottom: 1rem;
+ padding: 5px;
+ font-size: 1rem;
+}
+
