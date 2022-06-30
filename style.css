@@ -41,6 +41,13 @@ p {
   font-size: 1.15rem;
   /* z-index: 0; */
 }
+
+.countdown-container {
+  display: block;
+  text-align: center;
+  font-size: 1.15rem;
+
+}
 button {
   display: block;
   font-size: 1.3rem;
@@ -57,6 +64,8 @@ button .highscores {
 }
 button:hover {
   cursor: pointer;
+  background-color: #FAEA6A;
+  font-size: 1.5rem;
 }
 
 .button-box {
