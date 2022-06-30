@@ -20,7 +20,8 @@ var choicesContainer = document.querySelector('.choices')
 var headEl = document.querySelector('h1');
 var preGameEl = document.querySelector('.pre-game-info');
 var answerBtn = document.querySelector('.answer-choices-btn');
-var countDownEl = document.querySelector('.countdown-container')
+var countDownEl = document.querySelector('.countdown-container');
+var scoreFormEl = document.querySelector('form')
 
 //Quiz questions object array
 var quizQuestions = [
@@ -65,31 +66,12 @@ var currentQuestion = {};
 var timeLeft;
 var currentScore = 100;
 
-//Function to create quiz questions and answer choices
-// function quizGeneration() {
-//   var outputQuestions = [];
-//   for (var i = 0; i < quizQuestions.length; i++) {
-//     // var outputAnswers = [];
-//     //   for(var j = 0; j < quizQuestions[i].answers.length; j++) {
-//     //     outputAnswers.push(`
-//     //     <button class='answer-choices-btn'> ${quizQuestions.answers[j]} </button>`);
-//     //   } 
-//     outputQuestions.push(`
-//         <h2 class='question'> ${quizQuestions[i].question} </h2> 
-//         <button id='option-a' class="answer-choice-btn"> ${quizQuestions[i].a} </button>
-//         <button id='option-b' class="answer-choice-btn"> ${quizQuestions[i].b} </button>
-//         <button id='option-c' class="answer-choice-btn"> ${quizQuestions[i].c} </button>
-//         <button id='option-d' class="answer-choice-btn"> ${quizQuestions[i].d} </button>`);
-//   }
-//   questionsContainer.innerHTML = outputQuestions.join('');
-// }
-
 //Quiz questions set to not display upon opening the page
 
 questionsContainer.style.display = 'none';
 resultsContainer.style.display = 'none';
 timerContainer.style.display = 'block';
-
+scoreFormEl.style.display = 'none';
 //Set timer function
 function startTimer() {
 
@@ -334,19 +316,18 @@ function finalResults() {
   resultsContainer.innerHTML = `
   <div class='score'>
     <h2>Thanks for playing! Your final score is <em>${currentScore}</em> . You can submit it below.</h2>
-    <input class='hs-text' type='text'>
-    <input class='hs-submit' type='button' value='Submit'>  
   </div>`;
-
+  scoreFormEl.style.display = 'block';
+  
   var highScoreBtn = document.querySelector(".hs-submit")
   highScoreBtn.addEventListener('click', () => {
+    
     location.href('');
   })
 }
 
-//function for showing next q - this would be a slide
 
-//Event listener to start timer 
+//Event listener to start timer and questions
 startBtn.addEventListener('click', startTimer);
 startBtn.addEventListener('click', firstQuestion);
 
