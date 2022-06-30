@@ -59,23 +59,28 @@ button {
   color: white;
   margin-bottom: 2rem;
 }
-button .highscores {
-  margin-left: -50px;
+
+
+.start,
+.highscores {
+  align-items: center;
+  position: relative;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
+
 button:hover {
   cursor: pointer;
   background-color: #FAEA6A;
   font-size: 1.5rem;
 }
 
-.button-box {
-  text-align: start;
-  top: 40%;
-  left: 50%;
-  position: relative;
-/*   //-ms-transform: translate(-50%, -50%); */
-/* //  transform: translate(-50%, -50%); */
-} 
+.highscores:hover {
+  cursor: pointer;
+  background-color: #E08EA3;
+  font-size: 1.5rem;
+}
 .button a {
   color: white;
 }
@@ -134,5 +139,6 @@ form {
 form input {
   font-size: 1.3rem;
   padding: 7px;
+  margin-bottom: 10px;
 }
 

@@ -22,6 +22,9 @@ var preGameEl = document.querySelector('.pre-game-info');
 var answerBtn = document.querySelector('.answer-choices-btn');
 var countDownEl = document.querySelector('.countdown-container');
 var scoreFormEl = document.querySelector('form')
+var submitBtn = document.querySelector('.submit-button');
+var textEntry = document.querySelector('.text-entry')
+
 
 //Quiz questions object array
 var quizQuestions = [
@@ -72,6 +75,7 @@ questionsContainer.style.display = 'none';
 resultsContainer.style.display = 'none';
 timerContainer.style.display = 'block';
 scoreFormEl.style.display = 'none';
+
 //Set timer function
 function startTimer() {
 
@@ -87,10 +91,7 @@ function startTimer() {
   timeLeft = 101;
   var timeInterval = setInterval(function () {
     timeLeft--
-    // currentScore = timeLeft
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft}</h2>`;
-    // timerContainer.innerHTML = `
-    // <h2>Timer: ${timeLeft} </h2>`;
 
     if (timeLeft === 0) {
       clearInterval(timeInterval);
@@ -103,34 +104,35 @@ function startTimer() {
 function firstQuestion() {
   questionsContainer.innerHTML = `
     <h2 class='question'> ${quizQuestions[0].question} </h2> 
-    <button id='option-a' class="answer-choice-btn"> ${quizQuestions[0].a} </button>
-    <button id='option-b' class="answer-choice-btn"> ${quizQuestions[0].b} </button>
-    <button id='option-c' class="answer-choice-btn"> ${quizQuestions[0].c} </button>
-    <button id='option-d' class="answer-choice-btn"> ${quizQuestions[0].d} </button>`
+    <button id='option-a' class="answer-choice-btn">a. ${quizQuestions[0].a} </button>
+    <button id='option-b' class="answer-choice-btn">b. ${quizQuestions[0].b} </button>
+    <button id='option-c' class="answer-choice-btn">c. ${quizQuestions[0].c} </button>
+    <button id='option-d' class="answer-choice-btn">d. ${quizQuestions[0].d} </button>`
 
   var choiceABtn = document.getElementById('option-a');
   var choiceBBtn = document.getElementById('option-b');
   var choiceCBtn = document.getElementById('option-c');
   var choiceDBtn = document.getElementById('option-d');
 
-  choiceCBtn.addEventListener('mousedown', function () {
+  choiceCBtn.addEventListener('mouseup', function () {
     secondQuestion();
   })
-  choiceBBtn.addEventListener('mousedown', function () {
+  choiceBBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceABtn.addEventListener('mousedown', function () {
+  choiceABtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
+    choiceABtn.removeEventListener('click',);
   })
-  choiceDBtn.addEventListener('mousedown', function () {
+  choiceDBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
@@ -144,38 +146,38 @@ function secondQuestion() {
   choicesContainer.style.backgroundColor = '#87E0A0';
   questionsContainer.innerHTML = `
   <h2 class='question'> ${quizQuestions[1].question} </h2> 
-  <button id='option-a' class="answer-choice-btn"> ${quizQuestions[1].a} </button>
-  <button id='option-b' class="answer-choice-btn"> ${quizQuestions[1].b} </button>
-  <button id='option-c' class="answer-choice-btn"> ${quizQuestions[1].c} </button>
-  <button id='option-d' class="answer-choice-btn"> ${quizQuestions[1].d} </button>`
+  <button id='option-a' class="answer-choice-btn">a. ${quizQuestions[1].a} </button>
+  <button id='option-b' class="answer-choice-btn">b. ${quizQuestions[1].b} </button>
+  <button id='option-c' class="answer-choice-btn">c. ${quizQuestions[1].c} </button>
+  <button id='option-d' class="answer-choice-btn">d. ${quizQuestions[1].d} </button>`
 
   var choiceABtn = document.getElementById('option-a');
   var choiceBBtn = document.getElementById('option-b');
   var choiceCBtn = document.getElementById('option-c');
   var choiceDBtn = document.getElementById('option-d');
   
-  choiceABtn.addEventListener('click', () => {
+  choiceABtn.addEventListener('mouseup', () => {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceBBtn.addEventListener('mousedown', function () {
+  choiceBBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceCBtn.addEventListener('mousedown', function () {
+  choiceCBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceDBtn.addEventListener('mousedown', function () {
+  choiceDBtn.addEventListener('mouseup', function () {
     thirdQuestion();
   })
 }
@@ -185,38 +187,38 @@ function thirdQuestion() {
   choicesContainer.style.backgroundColor = '#87E0A0';
   questionsContainer.innerHTML = `
   <h2 class='question'> ${quizQuestions[2].question} </h2> 
-  <button id='option-a' class="answer-choice-btn"> ${quizQuestions[2].a} </button>
-  <button id='option-b' class="answer-choice-btn"> ${quizQuestions[2].b} </button>
-  <button id='option-c' class="answer-choice-btn"> ${quizQuestions[2].c} </button>
-  <button id='option-d' class="answer-choice-btn"> ${quizQuestions[2].d} </button>`
+  <button id='option-a' class="answer-choice-btn">a. ${quizQuestions[2].a} </button>
+  <button id='option-b' class="answer-choice-btn">b. ${quizQuestions[2].b} </button>
+  <button id='option-c' class="answer-choice-btn">c. ${quizQuestions[2].c} </button>
+  <button id='option-d' class="answer-choice-btn">d. ${quizQuestions[2].d} </button>`
 
   var choiceABtn = document.getElementById('option-a');
   var choiceBBtn = document.getElementById('option-b');
   var choiceCBtn = document.getElementById('option-c');
   var choiceDBtn = document.getElementById('option-d');
 
-  choiceABtn.addEventListener('click', () => {
+  choiceABtn.addEventListener('mouseup', () => {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceBBtn.addEventListener('mousedown', function () {
+  choiceBBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceCBtn.addEventListener('mousedown', function () {
+  choiceCBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceDBtn.addEventListener('mousedown', function () {
+  choiceDBtn.addEventListener('mouseup', function () {
     fourthQuestion();
   })
 }
@@ -226,10 +228,10 @@ function fourthQuestion() {
   choicesContainer.style.backgroundColor = '#87E0A0';
   questionsContainer.innerHTML = `
   <h2 class='question'> ${quizQuestions[3].question} </h2> 
-  <button id='option-a' class="answer-choice-btn"> ${quizQuestions[3].a} </button>
-  <button id='option-b' class="answer-choice-btn"> ${quizQuestions[3].b} </button>
-  <button id='option-c' class="answer-choice-btn"> ${quizQuestions[3].c} </button>
-  <button id='option-d' class="answer-choice-btn"> ${quizQuestions[3].d} </button>`
+  <button id='option-a' class="answer-choice-btn">a. ${quizQuestions[3].a} </button>
+  <button id='option-b' class="answer-choice-btn">b. ${quizQuestions[3].b} </button>
+  <button id='option-c' class="answer-choice-btn">c. ${quizQuestions[3].c} </button>
+  <button id='option-d' class="answer-choice-btn">d. ${quizQuestions[3].d} </button>`
 
   var choiceABtn = document.getElementById('option-a');
   var choiceBBtn = document.getElementById('option-b');
@@ -237,28 +239,28 @@ function fourthQuestion() {
   var choiceDBtn = document.getElementById('option-d');
 
 
-  choiceBBtn.addEventListener('click', () => {
+  choiceBBtn.addEventListener('mouseup', () => {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceCBtn.addEventListener('mousedown', function () {
+  choiceCBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceDBtn.addEventListener('mousedown', function () {
+  choiceDBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceABtn.addEventListener('mousedown', function () {
+  choiceABtn.addEventListener('mouseup', function () {
     finalQuestion();
   })
 }
@@ -268,38 +270,38 @@ function finalQuestion() {
   choicesContainer.style.backgroundColor = '#87E0A0';
   questionsContainer.innerHTML = `
   <h2 class='question'> ${quizQuestions[4].question} </h2> 
-  <button id='option-a' class="answer-choice-btn"> ${quizQuestions[4].a} </button>
-  <button id='option-b' class="answer-choice-btn"> ${quizQuestions[4].b} </button>
-  <button id='option-c' class="answer-choice-btn"> ${quizQuestions[4].c} </button>
-  <button id='option-d' class="answer-choice-btn"> ${quizQuestions[4].d} </button>`
+  <button id='option-a' class="answer-choice-btn">a. ${quizQuestions[4].a} </button>
+  <button id='option-b' class="answer-choice-btn">b. ${quizQuestions[4].b} </button>
+  <button id='option-c' class="answer-choice-btn">c. ${quizQuestions[4].c} </button>
+  <button id='option-d' class="answer-choice-btn">d. ${quizQuestions[4].d} </button>`
 
   var choiceABtn = document.getElementById('option-a');
   var choiceBBtn = document.getElementById('option-b');
   var choiceCBtn = document.getElementById('option-c');
   var choiceDBtn = document.getElementById('option-d');
 
-  choiceABtn.addEventListener('click', () => {
+  choiceABtn.addEventListener('mouseup', () => {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceCBtn.addEventListener('mousedown', function () {
+  choiceCBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceDBtn.addEventListener('mousedown', function () {
+  choiceDBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
     choicesContainer.style.backgroundColor = 'red';
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
   })
-  choiceBBtn.addEventListener('mousedown', function () {
+  choiceBBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Correct!</h2>`;
     choicesContainer.style.backgroundColor = '#87E0A0';
     finalResults();
@@ -315,7 +317,7 @@ function finalResults() {
   questionsContainer.style.display = 'none';
   resultsContainer.innerHTML = `
   <div class='score'>
-    <h2>Thanks for playing! Your final score is <em>${currentScore}</em> . You can submit it below.</h2>
+    <h2>Thanks for playing. Your final score is <em>${currentScore}</em> ! You can submit it below.</h2>
   </div>`;
   scoreFormEl.style.display = 'block';
   
@@ -326,8 +328,12 @@ function finalResults() {
   })
 }
 
-
 //Event listener to start timer and questions
 startBtn.addEventListener('click', startTimer);
 startBtn.addEventListener('click', firstQuestion);
+
+submitBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+  location.href = 'index2.html'
+})
 

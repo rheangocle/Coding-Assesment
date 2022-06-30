@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
+
 <body>
+
   <head>
     <h1> Welcome to Coding Quiz!</h1>
   </head>
@@ -18,12 +21,14 @@
   <main>
     <div class="pre-game-info">
       <h2>Are you ready to challenge yourself to some coding questions?</h2>
-      <p>You will have 100 seconds in total to answer all the questions. The timer will start when you click the button below and will display the time on the top of your screen. You can save your score at the end of the quiz and attempt as many times as you like. Thank you!</p>
+      <p>You will have 100 seconds in total to answer all the questions. The timer will start when you click the button
+        below and will display the time on the top of your screen. Your timer will deduct by 6 seconds whenever you choose a wrong answer choice. You can save your score at the end of the quiz and
+        attempt as many times as you like. Thank you!</p>
     </div>
 
     <div class='timer'></div>
     <div class="countdown-container"></div>
-    <div class='questions-container'> 
+    <div class='questions-container'>
       <h2 class='question'></h2>
       <button id='option-a' class="answer-choice-btn"></button>
       <button id='option-b' class="answer-choice-btn"></button>
@@ -33,17 +38,17 @@
     <div class='choices'> </div>
     <div class='score'> </div>
     <form class="highscore">
-      <input type="text" placeholder="Enter name">
-      <input type="submit" value="Submit">
+      <input class='text-entry' type="text" placeholder="Enter name">
+      <input class='submit-button' type="submit" value="Submit">
     </form>
-    <div class="button-box">
-      <button type="button" class='start'>Start Quiz</button>
-      <button type='button' class='highscores'>
-        <a href='index2.html'>High Scores</a>
-      </button>
-  </div>
+
+    <button type="button" class='start'>Start Quiz</button>
+    <button type='button' class='highscores'>
+      <a href='index2.html'>High Scores</a>
+    </button>
   </main>
-  
+
   <script src="script.js"></script>
 </body>
+
 </html>
