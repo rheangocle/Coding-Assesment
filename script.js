@@ -13,7 +13,6 @@ var scoreFormEl = document.querySelector('form')
 var submitBtn = document.querySelector('.submit-button');
 var textEntry = document.querySelector('.text-entry')
 
-
 //Quiz questions object array
 var quizQuestions = [
   {
@@ -53,12 +52,10 @@ var quizQuestions = [
   },
 ];
 //var currentScore; //later, score will be set to = time left.
-var currentQuestion = {};
 var timeLeft;
-var currentScore = 100;
+var currentScore = 75;
 
 //Quiz questions set to not display upon opening the page
-
 questionsContainer.style.display = 'none';
 resultsContainer.style.display = 'none';
 timerContainer.style.display = 'block';
@@ -66,7 +63,6 @@ scoreFormEl.style.display = 'none';
 
 //Set timer function
 function startTimer() {
-
   //Hides other elements aside from the timer and questions from showing on the screen
   headEl.style.display = 'none';
   preGameEl.style.display = 'none';
@@ -118,7 +114,6 @@ function firstQuestion() {
     countDownEl.innerHTML = `<h2>Timer: ${timeLeft} - 6</h2>`;
     currentScore = timeLeft - 5;
     timeLeft = currentScore;
-    choiceABtn.removeEventListener('click',);
   })
   choiceDBtn.addEventListener('mouseup', function () {
     choicesContainer.innerHTML = `<h2>Wrong</h2>`;
@@ -297,7 +292,7 @@ function finalQuestion() {
 }
 
 function finalResults() {
-  currentScore = timeLeft;
+  //currentScore = timeLeft;
   timerContainer.style.display = 'none';
   choicesContainer.style.display = 'none';
   countDownEl.style.display = 'none';
@@ -305,15 +300,10 @@ function finalResults() {
   questionsContainer.style.display = 'none';
   resultsContainer.innerHTML = `
   <div class='score'>
-    <h2>Thanks for playing. Your final score is <em>${currentScore}</em> ! You can submit it below.</h2>
+    <h2>Thanks for playing. Your final score is <em>${timeLeft}</em> ! You can submit it below.</h2>
   </div>`;
   scoreFormEl.style.display = 'block';
-  
-  // var highScoreBtn = document.querySelector(".hs-submit")
-  // highScoreBtn.addEventListener('click', () => {
-    
-  //   location.href('');
-  // })
+
 }
 
 //Event listener to start timer and questions
@@ -325,3 +315,5 @@ submitBtn.addEventListener('click', function(e) {
   location.href = './highscores.html'
 })
 
+localStorage.setItem('name', textEntry.value)
+localStorage.setItem('score', currentScore)
